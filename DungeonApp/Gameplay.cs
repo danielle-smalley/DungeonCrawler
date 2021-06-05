@@ -98,8 +98,7 @@ ________________________________________________
             Thread.Sleep(250);
             #endregion
 
-            //score running total so I can display
-            int wins = 0;
+            int wins = 0;  //score running total so I can display
 
 
             //TODO QUESTION - how do I use these instruments I've created so the user can choose one? And how do I keep it "stuck" to the player once they've chosen it?
@@ -152,13 +151,10 @@ ________________________________________________
 
             //create the player
             //TODO QUESTION - similar to the above with instruments, how do I let user choose from the names (Personas) I've created?
-            Dancer dancer = new Dancer(Persona.BananasBob, 10, 10, 20, 20, keyboard);
+            Dancer dancer = new Dancer(Persona.BananasBob, 65, 10, 20, 20, keyboard);
 
             //TODO - should i move the choose instrument under the room description?
-            //TODO - name of dancer missing in the battle scene printout
-            //TODO - there's a lot of missing. Increase some stats?
-            //TODO - dancer info not displaying
-            //TODO - boss info not displaying
+            //TODO - name of dancer missing in the battle scene printout - I'm using the names in Persona enum (wanting user to get to choose which one), I can't figure out how to call to this correctly in my class
             //TODO - tidy up console colors and clears.
 
             //Create the outer loop, for the room (dance floor/scene) and boss
@@ -168,9 +164,9 @@ ________________________________________________
             {
                 //create a boss array
                 ToneDeafTony t1 = new ToneDeafTony();
-                ToneDeafTony t2 = new ToneDeafTony("Fiesty Tony", 20, 20, 10, 10, 1, 5, "He's a spicier version of himself...he's obviously had a few", true);
-                NoRhythmNancy r1 = new NoRhythmNancy("No Rhythm Nancy", 10, 10, 8, 8, 1, 3, "Nancy gets in the way of dancing as she seems to possess zero rhythm detection skills. When it's past her bedtime, watch out!");
-                DiscoFever d1 = new DiscoFever("Disco Fever!", 20, 20, 12, 10, 2, 6, "Hey hey hey, boogie fever!");
+                ToneDeafTony t2 = new ToneDeafTony("Fiesty Tony", 20, 20, 60, 10, 1, 5, "He's a spicier version of himself...he's obviously had a few", true);
+                NoRhythmNancy r1 = new NoRhythmNancy("No Rhythm Nancy", 10, 10, 30, 8, 1, 3, "Nancy gets in the way of dancing as she seems to possess zero rhythm detection skills. When it's past her bedtime, watch out!");
+                DiscoFever d1 = new DiscoFever("Disco Fever!", 20, 20, 65, 10, 2, 6, "Hey hey hey, boogie fever!");
                 FunkyGhost f1 = new FunkyGhost();
                 Biggie b1 = new Biggie();
                 Boss[] bosses = { t1, t2, r1, d1, f1, b1 };
@@ -196,7 +192,7 @@ ________________________________________________
                     #region menu
 
                     Thread.Sleep(250);
-                    Console.Write("What will you do now? Can you dig it?\n" +
+                    Console.Write("\nWhat will you do now?\n" +
                         "C) Challenge to a Dance Battle/Dance Again!\n" +
                         "S) Sneak Outta This Joint\n" +
                         "D) Dancer Deets\n" +
@@ -228,6 +224,8 @@ ________________________________________________
                                 Console.Beep(698, 100); //F
                                 Console.Beep(784, 700); //G
                                 #endregion
+                                Console.WriteLine("You collect a bonus of 5 health points to restore some health.");
+                                dancer.Health += 5; //adding a bonus where user gets +5 health for each win
                                 Console.ResetColor();
                                 reload = true; //exits inner loop so a new dancefloor and boss are loaded
                                 wins++;
@@ -244,6 +242,7 @@ ________________________________________________
                             ////handle run away logic
                             Console.WriteLine("{0} throws one of their platform heels at you as you run away like a coward!", boss.Name);
                             Battle.DoAttack(boss, dancer);
+                            Console.WriteLine();
                             reload = true;
                             break;
 
@@ -254,7 +253,6 @@ ________________________________________________
                             //handle showing player info
                             Console.WriteLine(dancer);
                             Console.WriteLine("Dance Battles Won: " + wins);
-                            Console.Clear();
                             break;
 
                         case ConsoleKey.B:
@@ -263,7 +261,6 @@ ________________________________________________
                             Console.ForegroundColor = ConsoleColor.Red;
                             //handle showing challenge info/preview
                             Console.WriteLine(boss);
-                            Console.Clear();
                             break;
 
                         case ConsoleKey.Q:

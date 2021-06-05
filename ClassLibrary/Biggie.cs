@@ -16,7 +16,7 @@ namespace ClassLibrary
             MaxDamage = 6;
             Name = "BIGGIE";
             Health = 25;
-            HitChance = 25;
+            HitChance = 60;
             Block = 25;
             MinDamage = 2;
             BossDescription = "Well, they certainly aren't tiny...";

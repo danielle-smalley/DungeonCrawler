@@ -23,7 +23,7 @@ namespace ClassLibrary
             MaxDamage = 6;
             Name = "Tone Deaf Tony";
             Health = 25;
-            HitChance = 25;
+            HitChance = 60;
             Block = 20;
             MinDamage = 2;
             BossDescription = "A real New Jersey tough guy. He only has one volume = loud.";

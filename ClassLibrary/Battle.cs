@@ -15,7 +15,7 @@ namespace ClassLibrary
         {
             //Let's use a random dice roll
             Random rand = new Random();
-            int diceRoll = rand.Next(1, 51);
+            int diceRoll = rand.Next(1, 101);
             System.Threading.Thread.Sleep(1000);
             if (diceRoll <= (attacker.CalcHitChance() - defender.CalcBlock()))
             {
@@ -25,12 +25,12 @@ namespace ClassLibrary
                 defender.Health -= damageDealt;
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.BackgroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine("{0} attacked {1} and dealt {2} damage!", attacker.Name, defender.Name, damageDealt);
+                Console.WriteLine("{0} attacked and dealt {1} damage!", attacker.Name, damageDealt);
                 Console.ResetColor();
             }//end if
             else
             {
-                Console.WriteLine("{0} missed {1}!\n", attacker.Name, defender.Name);
+                Console.WriteLine("{0} missed!\n", attacker.Name);
             }//end else
         }//end DoAttack()
 

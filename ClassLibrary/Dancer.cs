@@ -32,7 +32,7 @@ namespace ClassLibrary
                 "Health: {1} / {2}\n" +
                 "Hit Chance: {3}%\t" +
                 "Block: {4}\n" +
-                "Equipped Instrument: {5}", DancerPersona, Health, MaxHealth, HitChance, Block, EquippedInstrument);
+                "{5}\n", DancerPersona, Health, MaxHealth, HitChance, Block, EquippedInstrument);
         }
 
         public override int CalcDamage()

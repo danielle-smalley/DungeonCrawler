@@ -15,7 +15,7 @@ namespace ClassLibrary
             MaxDamage = 3;
             Name = "Funky Ghost";
             Health = 10;
-            HitChance = 10;
+            HitChance = 50;
             Block = 5;
             MinDamage = 1;
             BossDescription = "A funky ghost lurking around from discos of the past...";
