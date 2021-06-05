@@ -15,6 +15,7 @@ namespace ClassLibrary
         public string InstrumentName { get; set; }
         public int BonusHitChance { get; set; }
         public bool TwoHandsNeeded { get; set; }
+        public string InstrumentDescription { get; set; }
         public int MinDamage
         {
             get { return _minDamage; }
@@ -32,7 +33,7 @@ namespace ClassLibrary
         }//end MinDamage
 
         //ctors
-        public Instrument(int minDamage, int maxDamage, string instrumentName, int bonusHitChance, bool twoHandsNeeded)
+        public Instrument(int minDamage, int maxDamage, string instrumentName, int bonusHitChance, bool twoHandsNeeded, string instrumentDescription)
         {
             //props that have business rules based off of other props go first
             MaxDamage = maxDamage;
@@ -40,6 +41,7 @@ namespace ClassLibrary
             InstrumentName = instrumentName;
             BonusHitChance = bonusHitChance;
             TwoHandsNeeded = twoHandsNeeded;
+            InstrumentDescription = instrumentDescription;
         }
 
         //methods
@@ -48,7 +50,8 @@ namespace ClassLibrary
             return string.Format("~*~*Equipped Instrument is: {0}*~*~\n" +
                 "Damage: {1} to {2}\t" +
                 "Bonus Hit Chance: {3}%\n" +
-                "Requires both hands to swing? {4}\n", InstrumentName, MinDamage, MaxDamage, BonusHitChance, TwoHandsNeeded ? "Yes" : "No");
+                "Requires both hands to swing? {4}\n" +
+                "Description: {5}.", InstrumentName, MinDamage, MaxDamage, BonusHitChance, TwoHandsNeeded ? "Yes" : "No", InstrumentDescription);
         }
 
     }//end class

@@ -12,7 +12,7 @@ namespace ClassLibrary //Character serves as base class for player and monster.
         private int _health;
 
         //props
-        public string DancerName { get; set; }
+        public string Name { get; set; }
         public int HitChance { get; set; }
         public int Block { get; set; }
         public int MaxHealth { get; set; }
