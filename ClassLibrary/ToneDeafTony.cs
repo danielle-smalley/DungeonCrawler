@@ -69,4 +69,4 @@ namespace ClassLibrary
 
     }//end calcblock()
     }//end class
-}//end namespace
+
