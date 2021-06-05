@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Boss.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="Dancer.cs" />
     <Compile Include="Instrument.cs" />
