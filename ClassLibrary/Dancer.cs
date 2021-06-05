@@ -10,11 +10,41 @@ namespace ClassLibrary
     {
         //fields - N/A
         //props
-        //public Persona DancerPersona
+        public Persona DancerPersona { get; set; }
+        public Instrument EquippedInstrument { get; set; }
 
         //ctors
+        public Dancer(Persona dancerPersona, int hitChance, int block, int health, int maxHealth, Instrument equippedInstrument)
+        {
+            MaxHealth = maxHealth;
+            DancerPersona = dancerPersona;
+            HitChance = hitChance;
+            Block = block;
+            Health = health;
+            MaxHealth = maxHealth;
+            EquippedInstrument = equippedInstrument;
+        }
 
         //methods
+        public override string ToString()
+        {
+            return string.Format("~*~*{0}*~*~\n" +
+                "Health: {1} / {2}\n" +
+                "Hit Chance: {3}%\t" +
+                "Block: {4}\n" +
+                "Equipped Instrument: {5}", DancerPersona, Health, MaxHealth, HitChance, Block, EquippedInstrument);
+        }
 
+        public override int CalcDamage()
+        {
+            Random rand = new Random();
+            int damage = rand.Next(EquippedInstrument.MinDamage, EquippedInstrument.MaxDamage + 1); //have to add a plus one to get the actual max damage
+            return damage;
+        }
+
+        public override int CalcHitChance()
+        {
+                return base.CalcHitChance() + EquippedInstrument.BonusHitChance; //taking the base hit return (hitchance) from Character and the equipped instrument's bonus hit chance
+        }
     }//end class
 }//end namespace
