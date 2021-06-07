@@ -53,9 +53,14 @@ namespace ClassLibrary
             return string.Format("\nX^X^X^BOSS^X^X^X\n" +
                 "Bad guy/gal name: {0}\n" +
                 "Health: {1} / {2}\n" +
-                "Damage Range: {3} - {4}\t Block: {5}%\n" +
+                "Damage Range: {3} - {4}\n Block: {5}%\n" +
                 "Description: \n{6}\n", Name, Health, MaxHealth, MinDamage, MaxDamage, Block, BossDescription);
         }
 
+        public override int CalcDamage()
+        {
+            Random rand = new Random();
+            return rand.Next(MinDamage, MaxDamage + 1); //need the +1 to get the full value 
+        }
     }//end class
 }//end namespace

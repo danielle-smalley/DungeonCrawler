@@ -30,7 +30,7 @@ namespace ClassLibrary
         {
             return string.Format("~*~*{0}*~*~\n" +
                 "Health: {1} / {2}\n" +
-                "Hit Chance: {3}%\t" +
+                "Hit Chance: {3}%\n" +
                 "Block: {4}\n" +
                 "{5}\n", DancerPersona, Health, MaxHealth, HitChance, Block, EquippedInstrument);
         }

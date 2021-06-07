@@ -47,11 +47,11 @@ namespace ClassLibrary
         //methods
         public override string ToString()
         {
-            return string.Format("~*~*Equipped Instrument is: {0}*~*~\n" +
-                "Damage: {1} to {2}\t" +
+            return string.Format("-*Equipped Instrument is: {0}*-\n" +
+                "Damage: {1} to {2}\n" +
                 "Bonus Hit Chance: {3}%\n" +
                 "Requires both hands to swing? {4}\n" +
-                "Description: {5}.", InstrumentName, MinDamage, MaxDamage, BonusHitChance, TwoHandsNeeded ? "Yes" : "No", InstrumentDescription);
+                "Description: {5}.\n", InstrumentName, MinDamage, MaxDamage, BonusHitChance, TwoHandsNeeded ? "Yes" : "No", InstrumentDescription);
         }
 
     }//end class
