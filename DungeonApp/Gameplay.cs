@@ -17,9 +17,9 @@ namespace DungeonApp
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.Clear();
             Console.WriteLine("Welcome to...");
-            Thread.Sleep(1000);
+            Thread.Sleep(3000);
             Console.WriteLine("the Discotheque Dungeon!");
-            Thread.Sleep(2000);
+            Thread.Sleep(3000);
             #region disco
             string disco = @"
 ________________________________________________
@@ -100,16 +100,13 @@ ________________________________________________
 
             int wins = 0;  //score running total so I can display
 
-
-            //TODO QUESTION - how do I use these instruments I've created so the user can choose one? And how do I keep it "stuck" to the player once they've chosen it, and possibly let them change instrument during the game?
             #region Instruments Created
             Instrument keyboard = new Instrument(1, 5, "Krazy Keyboard", 10, true, "A large keyboard for all of your piano and synth needs. It's pretty heavy. Watch the cords!");
             Instrument highHat = new Instrument(1, 4, "Hellacious High Hat", 8, false, "A high hat from a drum set. It is very versatile. CRASH!");
             Instrument bass = new Instrument(2, 6, "Bomb Bass", 12, true, "Bass...like a guitar, except it carries the song and everyone ignores it.");
             Instrument horn = new Instrument(1, 3, "Da Trumpet", 13, false, "Hard to ignore, this is one shiny trumpet.");
-            Instrument sax = new Instrument(2, 5, "Snazzy Saxophone", 9, true, "To quote Homere Simpson, 'Saxomophone'.");
+            Instrument sax = new Instrument(2, 5, "Snazzy Saxophone", 9, true, "To quote Homer Simpson, 'Saxomophone'.");
             Instrument[] instruments = { keyboard, highHat, bass, horn, sax };
-            Console.WriteLine(instruments);
 
             Console.WriteLine("Which instrument do you grab as your weapon? \n" +
                 "K) Keyboard\n" +
@@ -120,9 +117,12 @@ ________________________________________________
             ConsoleKey pickedInstrument = Console.ReadKey(true).Key;
             Console.Clear();
 
+            Instrument dancerInstrument = new Instrument(0, 1, "test", 10, true, "a test instrument, it's bad");
+
             switch (pickedInstrument)
             {
                 case ConsoleKey.K:
+                    dancerInstrument = keyboard;
                     #region insKeyboard
                     string insKeyboard = @"
                 || | | ||| | ||| | | ||| | ||| | | ||| | ||| | | ||| | ||| | | ||
@@ -136,6 +136,7 @@ ________________________________________________
                     break;
 
                 case ConsoleKey.H:
+                    dancerInstrument = highHat;
                     #region insHighHat
                     string insHighHat = @" 
                         ==I==
@@ -150,6 +151,7 @@ ________________________________________________
                     break;
 
                 case ConsoleKey.B:
+                    dancerInstrument = bass;
                     #region insBass
                     string insBass = @" 
              _
@@ -181,6 +183,7 @@ ________________________________________________
                     break;
 
                 case ConsoleKey.T:
+                    dancerInstrument = horn;
                     #region insTrumpet
                     string insTrumpet = @" 
                      /|
@@ -197,6 +200,7 @@ ________________________________________________
                     break;
 
                 case ConsoleKey.S:
+                    dancerInstrument = sax;
                     #region insSax
                     string insSax = @" 
   _,-----,____g===;,
@@ -242,15 +246,10 @@ ________________________________________________
                     Console.WriteLine("You gotta pick one, don't wanna be empty handed!");
                     break;
             }//end switch
-
             #endregion
 
             //create the player
-            //TODO QUESTION - similar to the above with instruments, how do I let user choose from the names (Personas) I've created?
-            Dancer dancer = new Dancer(Persona.BananasBob, 65, 10, 20, 20, keyboard);
-
-            //TODO QUESTION- name of dancer missing in the battle scene printout - I'm using the names in Persona enum (wanting user to get to choose which one), I can't figure out how to call to this correctly in my class?
-            //TODO - tidy up console colors and clears.
+            Dancer dancer = new Dancer("DiscoDancer", 65, 10, 20, 20, dancerInstrument);
 
             //Create the outer loop, for the room (dance floor/scene) and boss
             bool exit = false;
@@ -289,7 +288,6 @@ ________________________________________________
                     Thread.Sleep(250);
                     Console.Write("\nWhat will you do now?\n" +
                         "C) Challenge to a Dance Battle/Dance Again!\n" +
-                        "I) Swap out Instrument\n" +
                         "S) Sneak Outta This Joint\n" +
                         "D) Dancer Deets\n" +
                         "B) Boss Deets\n" +
@@ -330,12 +328,6 @@ ________________________________________________
                             }//end if
                             break;
 
-                        case ConsoleKey.I:
-                            Console.WriteLine("Which instrument would you like?");
-                            Console.WriteLine(instruments);
-                            //TODO - 
-                            break;
-
                         case ConsoleKey.S:
                             Console.BackgroundColor = ConsoleColor.Yellow;
                             Console.ForegroundColor = ConsoleColor.DarkGreen;
@@ -367,6 +359,21 @@ ________________________________________________
                         case ConsoleKey.Q:
                         case ConsoleKey.Escape:
                         case ConsoleKey.X:
+                            #region endDisco
+                            string endDisco = @"
+                      |
+                      |            .'
+                  \   |   /
+               `.  .d88b.   .'
+                  d888888b
+      --     --  (88888888)  --
+                  Y888888Y
+              .'   `Y88Y'   `.
+                  /       \
+           .'         !        `.
+";
+                            Console.WriteLine(endDisco);
+                            #endregion
                             Console.BackgroundColor = ConsoleColor.Green;
                             Console.ForegroundColor = ConsoleColor.Magenta;
                             Console.WriteLine("Leaving the disco. Peace, love, and granola.");
@@ -407,8 +414,6 @@ ________________________________________________
 
                 } while (!exit && !reload); //end inner do while
             } while (!exit); //end outer do while
-
-
         }//end main
 
         //create a collection of different rooms

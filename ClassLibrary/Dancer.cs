@@ -10,14 +10,13 @@ namespace ClassLibrary
     {
         //fields - N/A
         //props
-        public Persona DancerPersona { get; set; }
         public Instrument EquippedInstrument { get; set; }
 
         //ctors
-        public Dancer(Persona dancerPersona, int hitChance, int block, int health, int maxHealth, Instrument equippedInstrument)
+        public Dancer(string name, int hitChance, int block, int health, int maxHealth, Instrument equippedInstrument)
         {
+            Name = name;
             MaxHealth = maxHealth;
-            DancerPersona = dancerPersona;
             HitChance = hitChance;
             Block = block;
             Health = health;
@@ -32,7 +31,7 @@ namespace ClassLibrary
                 "Health: {1} / {2}\n" +
                 "Hit Chance: {3}%\n" +
                 "Block: {4}\n" +
-                "{5}\n", DancerPersona, Health, MaxHealth, HitChance, Block, EquippedInstrument);
+                "{5}\n", Name, Health, MaxHealth, HitChance, Block, EquippedInstrument);
         }
 
         public override int CalcDamage()
